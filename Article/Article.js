@@ -84,9 +84,30 @@ const data = [
 
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+
+
+  },
+  {
+    title: 'Escrito por GERMAIN ',
+    date: 'march 17, 2020',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
+
 ];
+
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
@@ -112,3 +133,62 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+
+const createArticles = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
+
+//create elementos
+const article = document.createElement('div');
+const h2 = document.createElement('h2');
+const day = document.createElement('p');
+const p1 = document.createElement('p');
+const p2 = document.createElement('p');
+const p3 = document.createElement('p');
+const expandButton = document.createElement('span');
+
+//create estructura
+article.appendChild(h2);
+article.appendChild(day);
+article.appendChild(p1);
+article.appendChild(p2);
+article.appendChild(p3);
+article.appendChild(expandButton);
+console.log(article);
+
+//call css
+article.classList.add("article");
+h2.classList.add("h2");
+day.classList.add("date");
+expandButton.classList.add("expandButton");
+console.log(article);
+
+//adition context 
+h2.textContent = title;
+day.textContent = date;
+p1.textContent = firstParagraph;
+p2.textContent = secondParagraph;
+p2.textContent = thirdParagraph;
+expandButton.textContent  = "Click Here";
+
+//add EventListener
+expandButton.addEventListener('click',() =>  {
+  return article.classList.toggle('article-open');
+   
+})
+
+
+
+console.log(article);
+return article;
+
+
+}
+//ADD 
+const articles = document.querySelector('.articles')
+
+data.forEach(germain =>{
+  //div
+  articles.appendChild(createArticles(germain.title, germain.date, germain.firstParagraph, germain.secondParagraph, germain.thirdParagraph))
+} )
+

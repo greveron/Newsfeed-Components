@@ -33,3 +33,52 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+//create function
+const createMenu = (menuItems)=>{
+  
+  //create DIV + element ul
+const menuDiv =document.createElement('div');
+const ul = document.createElement('ul');
+
+//create li
+menuItems.forEach(germain => {
+  //add li
+  const li = document.createElement('li');
+  //add context
+  li.textContent = germain
+  //add css
+  li.classList.add("li");
+  //add li inside ul
+  ul.appendChild(li);
+})
+
+//create structure (component)
+menuDiv.appendChild(ul);
+
+//call css
+menuDiv.classList.add('menu');
+
+//mani DOM
+const menuButtom = document.querySelector('.menu-button');
+//put addlistener on menubuttton
+menuButtom.addEventListener ('click', () => {
+return menuDiv.classList.toggle('menu--open');
+
+} )
+return menuDiv;
+}
+  
+//select header
+const header = document.querySelector('.header');
+
+//add function to header
+header.appendChild(createMenu (menuItems));
+
+
+
+
+
+
+
+
